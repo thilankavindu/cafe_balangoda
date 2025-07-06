@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99 Cafe Balangoda - Best Coffee in Town</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6F4E37; /* Coffee brown */
+            --secondary-color: #C4A484; /* Light coffee */
+            --accent-color: #D2B48C; /* Tan */
+            --light-color: #F5F5DC; /* Beige */
+            --dark-color: #3E2723; /* Dark brown */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: #333;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-category {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-weight: 700;
+            margin: 10px 0;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .in-stock {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .out-of-stock {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .about-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .contact-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .order-btn {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            font-weight: 600;
+            border: none;
+        }
+
+        .order-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .stats-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stats-label {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        /* Shopping Cart Styles */
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .offcanvas-cart {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            height: 30px;
+            margin: 0 5px;
+        }
+
+        /* Product Modal */
+        .product-modal-img {
+            max-height: 400px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Checkout Form */
+        .checkout-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">99 CAFE BALANGODA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#online-store">Online Store</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cart-icon" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Shopping Cart Offcanvas -->
+<div class="offcanvas offcanvas-end offcanvas-cart" tabindex="-1" id="offcanvasCart">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Your Shopping Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="cart-items-container">
+            <!-- Cart items will be added here dynamically -->
+            <div class="text-center py-5 empty-cart-message">
+                <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-summary mt-auto">
+            <div class="d-flex justify-content-between mb-3">
+                <h5>Subtotal:</h5>
+                <h5 id="cart-subtotal">Rs 0.00</h5>
+            </div>
+            <button class="btn btn-primary w-100 mb-3" id="checkout-btn">Proceed to Checkout</button>
+            <button class="btn btn-outline-secondary w-100" data-bs-dismiss="offcanvas">Continue Shopping</button>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Complete Your Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="checkout-form">
+                            <h4 class="mb-4">Customer Information</h4>
+                            <form id="order-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Delivery Address</label>
+                                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Order Notes</label>
+                                    <textarea class="form-control" id="notes" rows="2" placeholder="Any special instructions?"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="checkout-form">
+                            <h4 class="mb-4">Order Summary</h4>
+                            <div id="checkout-items">
+                                <!-- Order items will be added here -->
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="checkout-subtotal">Rs 0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Delivery Fee:</span>
+                                <span>Rs 200.00</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total:</span>
+                                <span id="checkout-total">Rs 0.00</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-4" id="place-order-btn">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Confirmation Modal -->
+<div class="modal fade" id="orderConfirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle fa-5x text-success"></i>
+                </div>
+                <h4 class="mb-3">Thank You For Your Order!</h4>
+                <p>Your order has been placed successfully.</p>
+                <p>We'll contact you shortly to confirm the details.</p>
+                <p class="fw-bold">Order ID: <span id="order-id">#ORD-12345</span></p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalTitle">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="" class="product-modal-img" id="productModalImage" alt="Product Image">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 id="productModalName"></h3>
+                        <p class="text-muted" id="productModalCategory"></p>
+                        <h4 class="my-3" id="productModalPrice"></h4>
+                        <p id="productModalStock"></p>
+                        <div class="mb-4">
+                            <label for="productQuantity" class="form-label">Quantity:</label>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="decreaseQty">-</button>
+                                <input type="number" class="quantity-input" id="productQuantity" value="1" min="1">
+                                <button class="quantity-btn" id="increaseQty">+</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" id="addToCartBtn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <h1 class="hero-title">Welcome to 99 Cafe Balangoda</h1>
+        <p class="hero-subtitle">Experience the finest coffee and stationery products in town</p>
+        <a href="#products" class="btn btn-primary btn-lg">Explore Our Products</a>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="py-5">
+    <div class="container">
+        <h2 class="text-center section-title">Our Products</h2>
+
+        <div class="row">
+            <!-- Agriculture Products -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 1,
+                        "name": "16L Agro Sprayer",
+                        "category": "Agriculture",
+                        "price": 3250.00,
+                        "stock": 10,
+                        "image": "https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="card-img-top product-img" alt="16L Agro Sprayer">
+                    <div class="card-body">
+                        <span class="product-category">Agriculture</span>
+                        <h5 class="product-title">16L Agro Sprayer</h5>
+                        <p class="product-price">Rs 3,250.00</p>
+                        <p class="in-stock">In Stock: 10</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stationery Products -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 2,
+                        "name": "A3 Cover Page (4 Color) 150 Art paper",
+                        "category": "Stationery",
+                        "price": 50.00,
+                        "stock": 0,
+                        "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" class="card-img-top product-img" alt="A3 Cover Page">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">A3 Cover Page (4 Color) 150 Art paper</h5>
+                        <p class="product-price">Rs 50.00</p>
+                        <p class="out-of-stock">Out of Stock</p>
+                        <button class="btn order-btn w-100" disabled>Notify Me</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 3,
+                        "name": "A3 Duplo (70 gsm)",
+                        "category": "Stationery",
+                        "price": 7.80,
+                        "stock": 430,
+                        "image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" class="card-img-top product-img" alt="A3 Duplo">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">A3 Duplo (70 gsm)</h5>
+                        <p class="product-price">Rs 7.80</p>
+                        <p class="in-stock">In Stock: 430</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 4,
+                        "name": "A3 Photocopy (70gsm)",
+                        "category": "Stationery",
+                        "price": 7.80,
+                        "stock": 828,
+                        "image": "https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" class="card-img-top product-img" alt="A3 Photocopy">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">A3 Photocopy (70gsm)</h5>
+                        <p class="product-price">Rs 7.80</p>
+                        <p class="in-stock">In Stock: 828</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 5,
+                        "name": "A4 Duplo 70 gsm",
+                        "category": "Stationery",
+                        "price": 3.90,
+                        "stock": 320,
+                        "image": "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" class="card-img-top product-img" alt="A4 Duplo">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">A4 Duplo 70 gsm</h5>
+                        <p class="product-price">Rs 3.90</p>
+                        <p class="in-stock">In Stock: 320</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 6,
+                        "name": "A4 Photocopy (70gsm)",
+                        "category": "Stationery",
+                        "price": 3.90,
+                        "stock": 1563,
+                        "image": "https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top product-img" alt="A4 Photocopy">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">A4 Photocopy (70gsm)</h5>
+                        <p class="product-price">Rs 3.90</p>
+                        <p class="in-stock">In Stock: 1,563</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card product-card" data-product='{
+                        "id": 7,
+                        "name": "Book Binding",
+                        "category": "Stationery",
+                        "price": 60.00,
+                        "stock": 1,
+                        "image": "https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80"
+                    }'>
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" class="card-img-top product-img" alt="Book Binding">
+                    <div class="card-body">
+                        <span class="product-category">Stationery</span>
+                        <h5 class="product-title">Book Binding</h5>
+                        <p class="product-price">Rs 60.00</p>
+                        <p class="in-stock">In Stock: 1</p>
+                        <button class="btn order-btn w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Online Store Stats Section -->
+<section id="online-store" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center section-title">Online Store</h2>
+        <p class="text-center mb-5">Share our store link and get more orders online</p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="stats-number">8</div>
+                    <div class="stats-label">Total Orders</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="stats-number">7</div>
+                    <div class="stats-label">Open Orders</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <div class="stats-number">107</div>
+                    <div class="stats-label">Store Views</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <h4>Order Value Received</h4>
+            <h3 class="text-success">Rs 9,838.70</h3>
+
+            <div class="mt-4">
+                <button class="btn btn-primary me-2">Manage Items</button>
+                <button class="btn btn-primary me-2">Manage Orders</button>
+                <button class="btn btn-primary">Store Reports</button>
+            </div>
+
+            <div class="alert alert-warning mt-4">
+                <strong>3 Items</strong> are currently out of stock
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">About 99 Cafe Balangoda</h2>
+                <p>Welcome to 99 Cafe Balangoda, your one-stop destination for quality coffee and stationery products. We take pride in offering the best products to our valued customers.</p>
+                <p>Our journey began with a simple mission: to provide high-quality products at affordable prices with excellent customer service.</p>
+                <p>Whether you're looking for agricultural equipment like our 16L Agro Sprayer or premium stationery items, we've got you covered.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="img-fluid rounded" alt="Cafe Interior">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section py-5">
+    <div class="container">
+        <h2 class="text-center section-title" style="color: white;">Contact Us</h2>
+
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h4>Phone</h4>
+                <p>+94 75 280 4274</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h4>Address</h4>
+                <p>Balangoda, Sri Lanka</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h4>Email</h4>
+                <p>info@99cafebalangoda.com</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-6 mx-auto">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-light w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>99 CAFE BALANGODA</h5>
+                <p>Quality products, exceptional service.</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p class="mt-3">© 2025 99 Cafe Balangoda. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentProduct = null;
+
+        // Update cart count
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const container = document.getElementById('cart-items-container');
+            const emptyMessage = container.querySelector('.empty-cart-message');
+            const subtotalElement = document.getElementById('cart-subtotal');
+
+            if (cart.length === 0) {
+                if (!emptyMessage) {
+                    container.innerHTML = `
+                            <div class="text-center py-5 empty-cart-message">
+                                <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                                <p>Your cart is empty</p>
+                            </div>
+                        `;
+                }
+                subtotalElement.textContent = 'Rs 0.00';
+                return;
+            }
+
+            // Remove empty message if it exists
+            if (emptyMessage) {
+                emptyMessage.remove();
+            }
+
+            // Generate cart items HTML
+            let html = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                html += `
+                        <div class="cart-item" data-index="${index}">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <img src="${item.image}" class="cart-item-img me-3" alt="${item.name}">
+                                    <div>
+                                        <h6>${item.name}</h6>
+                                        <p class="text-muted mb-1">${item.category}</p>
+                                        <p class="fw-bold">Rs ${item.price.toFixed(2)}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-danger remove-item"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn decrease"><i class="fas fa-minus"></i></button>
+                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                                    <button class="quantity-btn increase"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="fw-bold">Rs ${itemTotal.toFixed(2)}</div>
+                            </div>
+                        </div>
+                    `;
+            });
+
+            container.innerHTML = html;
+            subtotalElement.textContent = `Rs ${subtotal.toFixed(2)}`;
+
+            // Add event listeners to quantity controls
+            document.querySelectorAll('.decrease').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.closest('.cart-item').dataset.index;
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                        updateCartCount();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.increase').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.closest('.cart-item').dataset.index;
+                    cart[index].quantity++;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const index = this.closest('.cart-item').dataset.index;
+                    const newQuantity = parseInt(this.value);
+                    if (newQuantity > 0) {
+                        cart[index].quantity = newQuantity;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                        updateCartCount();
+                    } else {
+                        this.value = cart[index].quantity;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.closest('.cart-item').dataset.index;
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+        }
+
+        // Initialize product modal
+        const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+
+        // Handle product card clicks
+        document.querySelectorAll('.product-card').forEach(card => {
+            const product = JSON.parse(card.getAttribute('data-product'));
+            const addToCartBtn = card.querySelector('.order-btn');
+
+            // Only add click handler if product is in stock
+            if (product.stock > 0) {
+                addToCartBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+
+                    // Set current product
+                    currentProduct = product;
+
+                    // Update modal with product details
+                    document.getElementById('productModalTitle').textContent = product.name;
+                    document.getElementById('productModalImage').src = product.image;
+                    document.getElementById('productModalName').textContent = product.name;
+                    document.getElementById('productModalCategory').textContent = product.category;
+                    document.getElementById('productModalPrice').textContent = `Rs ${product.price.toFixed(2)}`;
+                    document.getElementById('productModalStock').textContent = `In Stock: ${product.stock}`;
+                    document.getElementById('productModalStock').className = 'in-stock';
+                    document.getElementById('productQuantity').value = 1;
+
+                    // Show modal
+                    productModal.show();
+                });
+            }
+
+            // Card click shows modal
+            card.addEventListener('click', function() {
+                if (product.stock > 0) {
+                    // Set current product
+                    currentProduct = product;
+
+                    // Update modal with product details
+                    document.getElementById('productModalTitle').textContent = product.name;
+                    document.getElementById('productModalImage').src = product.image;
+                    document.getElementById('productModalName').textContent = product.name;
+                    document.getElementById('productModalCategory').textContent = product.category;
+                    document.getElementById('productModalPrice').textContent = `Rs ${product.price.toFixed(2)}`;
+                    document.getElementById('productModalStock').textContent = `In Stock: ${product.stock}`;
+                    document.getElementById('productModalStock').className = 'in-stock';
+                    document.getElementById('productQuantity').value = 1;
+
+                    // Show modal
+                    productModal.show();
+                }
+            });
+        });
+
+        // Handle quantity controls in modal
+        document.getElementById('decreaseQty').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+
+        document.getElementById('increaseQty').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+
+        // Handle add to cart button in modal
+        document.getElementById('addToCartBtn').addEventListener('click', function() {
+            if (!currentProduct) return;
+
+            const quantity = parseInt(document.getElementById('productQuantity').value);
+
+            // Check if product already in cart
+            const existingItemIndex = cart.findIndex(item => item.id === currentProduct.id);
+
+            if (existingItemIndex >= 0) {
+                // Update quantity if already in cart
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    ...currentProduct,
+                    quantity: quantity
+                });
+            }
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update UI
+            updateCartCount();
+            updateCartDisplay();
+
+            // Close modal
+            productModal.hide();
+
+            // Show success message
+            const toast = new bootstrap.Toast(document.createElement('div'));
+            toast._element.className = 'toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3';
+            toast._element.innerHTML = `
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Added to cart!
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                `;
+            document.body.appendChild(toast._element);
+            toast.show();
+
+            // Remove toast after it hides
+            toast._element.addEventListener('hidden.bs.toast', function() {
+                document.body.removeChild(toast._element);
+            });
+        });
+
+        // Handle checkout button
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            if (cart.length === 0) return;
+
+            const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            const checkoutSubtotalElement = document.getElementById('checkout-subtotal');
+            const checkoutTotalElement = document.getElementById('checkout-total');
+
+            // Generate checkout items HTML
+            let html = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                html += `
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>${item.name} x${item.quantity}</span>
+                            <span>Rs ${itemTotal.toFixed(2)}</span>
+                        </div>
+                    `;
+            });
+
+            checkoutItemsContainer.innerHTML = html;
+            checkoutSubtotalElement.textContent = `Rs ${subtotal.toFixed(2)}`;
+            checkoutTotalElement.textContent = `Rs ${(subtotal + 200).toFixed(2)}`;
+
+            // Show checkout modal
+            checkoutModal.show();
+
+            // Close cart offcanvas
+            const offcanvasCart = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasCart'));
+            offcanvasCart.hide();
+        });
+
+        // Handle place order button
+        document.getElementById('place-order-btn').addEventListener('click', function() {
+            // Validate form
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+
+            if (!name || !phone || !address) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // In a real application, you would send this data to your server
+            // For this demo, we'll just show the confirmation
+
+            // Generate random order ID
+            const orderId = '#ORD-' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('order-id').textContent = orderId;
+
+            // Show confirmation modal
+            const checkoutModal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+            checkoutModal.hide();
+
+            const confirmationModal = new bootstrap.Modal(document.getElementById('orderConfirmationModal'));
+            confirmationModal.show();
+
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDisplay();
+        });
+
+        // Initialize cart display
+        updateCartCount();
+        updateCartDisplay();
+    });
+</script>
+</body>
+</html>
